@@ -42,7 +42,7 @@ class buycraftAPI
         $this->apiFormat = $apiFormat;
 
         // Validation format option
-        if ($this->apiFormat !== 'string' || $this->apiFormat !== 'object' || $this->apiFormat !== 'array' )
+        if ($this->apiFormat !== 'string' && $this->apiFormat !== 'object' && $this->apiFormat !== 'array' )
             throw new Exception('Invalid API return format');
     }
 
