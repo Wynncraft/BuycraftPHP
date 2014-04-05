@@ -71,16 +71,16 @@ class buycraftAPI
         // Query the api and fetch the response
         $ch = curl_init($this->apiUrl . $apiQuery);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
+
         $apiQuery = curl_exec($ch);
-        
+
         if($apiQuery === false || curl_getinfo($ch,CURLINFO_HTTP_CODE) !== 200) {
             curl_close($ch);
             throw new Exception('Buycraft API failed to respond correctly');
         }
-        
+
         curl_close($ch);
-        
+
         // Handle formatting
         if ($this->apiFormat === 'object') {
             $apiQuery = json_decode($apiQuery);
@@ -98,6 +98,7 @@ class buycraftAPI
      *
      * @param null $limit
      * @return array|mixed|string
+     * @throws Exception
      */
     public function getPayments($limit = null)
     {
@@ -108,6 +109,7 @@ class buycraftAPI
      * Return a JSON document of all available store categories
      *
      * @return array|mixed|string
+     * @throws Exception
      */
     public function getCategories()
     {
@@ -118,6 +120,7 @@ class buycraftAPI
      * Return a JSON document of all available store packages
      *
      * @return array|mixed|string
+     * @throws Exception
      */
     public function getPackages()
     {
@@ -129,6 +132,7 @@ class buycraftAPI
      *
      * @param null $limit
      * @return array|mixed|string
+     * @throws Exception
      */
     public function getPendingPlayers($limit = null)
     {
@@ -140,6 +144,7 @@ class buycraftAPI
      *
      * @param null $limit
      * @return array|mixed|string
+     * @throws Exception
      */
     public function getPendingCommands($limit = null) {
         return $this->apiCommand('commands', 'lookup', null, $limit);
