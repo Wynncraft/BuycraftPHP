@@ -30,6 +30,10 @@ class buycraftAPI
 
     /**
      * Create a new class instance
+     *  - There are 3 available $apiFormats
+     *    - 'string'|null : returns as a json document (default)
+     *    - 'array' : returns as a php array
+     *    - 'object' : returns as as a php object
      *
      * @param $apiKey
      * @param string $apiFormat
